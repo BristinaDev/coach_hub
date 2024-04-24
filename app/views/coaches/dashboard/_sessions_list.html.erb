@@ -1,0 +1,32 @@
+<h2 class="my-6 text-center text-gray-700">Your Coaching Sessions</h2>
+
+<% if @coaching_sessions.any? %>
+  <div class="row gy-6">
+    <% @coaching_sessions.each do |coaching_session| %>
+      <div class="col-lg-3">
+      <div class="card h-full">
+        <div class="card-header bg-gray-200">Company Name: <%= coaching_session.company.name %></div>
+          <div class="card-body">
+            <p class="card-text">Coaching Session duration: <%= coaching_session&.duration %></p>
+            <% coaching_session.employees.each do |employee| %>
+              <p class="card-text">Employee Name: <%= employee&.name %> ,</p>
+              <p class="card-text">Employee Coaching Requirements: <%= employee&.coaching_requirements %></p>
+            <% end %>
+          </div>
+          <div class="card-footer bg-transparent border-gray">
+            <p class="card-text">Coaching Session: <%= coaching_session&.name %><p>
+            <p class="card-text">  Number of Employees: <%= coaching_session&.employees.count %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <div>
+  <% if @coaching_sessions.present? %>
+    <div class="justify-content-center mt-auto mb-lg-0 mb-8 pagination-section">
+      <%= paginate @coaching_sessions %>
+    </div>
+  <% end %>
+<% else %>
+  <p class="text-center text-primary">Not found.</p>
+<% end %>
+

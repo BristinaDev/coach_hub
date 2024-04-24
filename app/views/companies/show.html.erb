@@ -1,0 +1,19 @@
+<div class="container-fluid bg-surface-light">
+  <div class="gx-0 row">
+    <div class="min-h-screen vstack p-6 col-lg-6">
+      <div class="my-auto">
+        <div class="max-w-screen-sm mx-auto">
+          <h1 class="mb-4 mt-6 font-bolder"><%= @company&.name %></h1>
+          <p class="mb-6 text-lg">We are pleased to Welcome you to the <%= @company&.description %>.</p>
+          <%= render 'registration_form', employee: @employee %>
+        </div>
+      </div>
+    </div>
+
+    <div class="min-h-screen bg-paris-green d-none d-lg-block bg-cover-center-nr col-lg-6 p-6">
+      <div class="m-auto vstack h-full justify-content-center align-items-center"> 
+        <%= image_tag 'user-dashboard.svg', width: '600' %>
+      </div>
+    </div>
+  </div>
+</div>

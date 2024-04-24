@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="mb-6 text-center mt-lg-20 mt-10 text-gray-800">Welcome <%= @coach&.name %> to your Dashboard</h2>
+  <%= form_tag(coaches_root_path, method: :get, id: "search-form", remote: true,) do %>
+    <div class="d-flex gap-2">
+      <%= text_field_tag :coaching_program_name, params[:coaching_program_name], placeholder: "Filter by Program Name", class: "form-control" %>
+      <%= text_field_tag :company_name, params[:company_name], placeholder: "Filter by Company Name", class: "form-control" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
+      <%= button_tag "Reset", type: :button, onclick: "resetForm()", class: "btn btn-secondary" %>
+    </div>
+  <% end %>
+
+  <div id="sessions-container">
+    <%= render partial: 'sessions_list', coaching_sessions: @coaching_sessions %>
+  </div>
+</div>
+
+<script>
+  function resetForm() {
+    document.getElementById("search-form").reset();
+    location.reload();
+  }
+</script>

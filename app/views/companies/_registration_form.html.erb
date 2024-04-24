@@ -1,0 +1,75 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with model: @employee, url: register_user_company_path(@company), data: {turbo: false}, remote: true do |f| %>
+      <%= f.hidden_field :company_id, value: @company.id %>
+      <% if flash[:error].present? %>
+        <div class="alert alert-danger">
+          <% flash[:error].each do |error| %>
+            <p><%= error %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <fieldset id="step1" class="vstack gap-4">
+        <div class="form-group">
+          <%= f.label :coaching_program_id %>
+          <%= f.collection_select :coaching_program_id, @coaching_programs, :id, :name, { prompt: "Select Coaching Program" }, { class: "form-select" } %>
+        </div>
+  
+        <div class="form-group">
+          <%= f.label :your_coaching_requirements %>
+          <%= f.text_area :coaching_requirements, class: "form-control" %>
+        </div>
+        <%= button_tag "Next", class: "btn btn-primary next-step w-full mt-4" %>
+      </fieldset>
+
+      <fieldset id="step2" class="vstack gap-4" style="display: none;">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: "form-control" %>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: "form-control" %>
+        </div>
+                      
+        <div class="form-group">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :coach_id %>
+          <%= f.collection_select :coach_id, Coach.all, :id, :name, { prompt: "Select Coach (Optional)" }, { class: "form-select" } %>
+        </div>
+
+        <div class="hstack gap-2 mt-4">
+          <%= button_tag "Previous", class: "btn btn-secondary prev-step w-full" %>
+          <%= f.submit "Submit", class: "btn btn-primary w-full" %>
+        </div>
+      </fieldset>
+    <% end %>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function() {
+    $('.next-step').click(function(e) {
+      e.preventDefault();
+      $('#step1').hide();
+      $('#step2').show();
+    });
+
+    $('.prev-step').click(function(e) {
+      e.preventDefault();
+      $('#step2').hide();
+      $('#step1').show();
+    });
+  });
+</script>

@@ -1,0 +1,24 @@
+<div class="container">
+  <h1 class="mb-6 text-center mt-lg-20 mt-10 text-gray-800">Employee Assignments</h1>
+
+  <% if @current_assignments.any? %>
+    <div class="row">
+      <% @current_assignments.each do |assignment| %>
+        <div class="col-md-4 mb-4">
+          <div class="card ma h-full">
+            <div class="card-header bg-gray-200"><strong>Task Title:</strong> <%= assignment.title %></div>
+            <div class="card-body">
+              <p class="card-text"><strong>Task Description:</strong> <%= assignment.description %></p>
+            </div>
+            <div class="card-footer bg-transparent border-gray">
+              <p class="card-text"><strong>Start Date:</strong> <%= assignment.start_date %></p>
+              <p class="card-text"><strong>End Date:</strong> <%= assignment.end_date %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <p>No assignments found for you</p>
+  <% end %>
+</div>

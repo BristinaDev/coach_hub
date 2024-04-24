@@ -1,0 +1,7 @@
+en:
+  admin:
+    actions:
+      employees:
+        breadcrumb: "Employees"
+        title: "Employees"
+        menu: "Employees"

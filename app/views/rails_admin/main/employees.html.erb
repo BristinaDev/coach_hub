@@ -1,0 +1,18 @@
+<% if @employees.present? %>
+  <h2 class="mb-4">Registered Employees</h2>
+  <ul class="list-group">
+    <% @employees.each do |employee| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <div>
+          <span class="mr-3"><%= employee&.email %></span>
+          <span class="text-muted"><%= employee&.created_at.strftime("%Y-%m-%d") %></span>
+        </div>
+        <div>
+          <%= link_to 'Edit', rails_admin.edit_path(model_name: 'Employee', id: employee&.id), class: 'btn btn-primary btn-sm' %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p class="alert alert-info">No employees found for this company.</p>
+<% end %>

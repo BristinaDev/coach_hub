@@ -1,0 +1,37 @@
+<% if coach_signed_in? || employee_signed_in? %>
+  <nav class="navbar navbar-main navbar-expand-lg position-sticky top-0 navbar-dark bg-dark py-2 py-lg-1 px-0 border-bottom">
+      <div class="container-fluid">
+          <a class="navbar-brand d-flex align-items-center gap-2">
+            <span class="text-light h5 font-bold ls-tight">
+              <% if employee_signed_in? %>
+                <%= current_employee&.email %></p>
+              <% end %>
+              <% if coach_signed_in? %>
+                <%= current_coach&.email %></p>
+              <% end %>
+            </span>
+          </a>
+          <button class="navbar-toggler me-n2 ms-auto text-start" type="button" data-bs-toggle="modal" data-bs-target="#mobile_nav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-nav order-lg-5 ms-auto d-none d-lg-inline-flex align-items-center">
+              <% if coach_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'Coach Dashboard', coaches_root_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Logout', destroy_coach_session_path, method: :delete, class: 'nav-link' %>
+                </li>
+              <% end %>
+              <% if employee_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to 'User Dashboard', employees_root_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to 'Logout', destroy_employee_session_path, method: :delete, class: 'nav-link' %>
+                </li>
+              <% end %>
+          </div>
+      </div>
+  </nav>
+<% end %>
