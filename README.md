@@ -13,7 +13,7 @@ Things you may want to cover:
 
 - Configuration
   Database pg
-  
+
 - Node 19.3.0
 
 - Database creation
@@ -33,6 +33,8 @@ Things you may want to cover:
 - [Company A](http://localhost:3000/companies/1)
 
 - [Company B](http://localhost:3000/companies/2)
+
+- Logins:
 
 - [Admin](http://localhost:3000/admins/sign_in)
 - [Employee](http://localhost:3000/employees/sign_in)
