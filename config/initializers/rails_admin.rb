@@ -42,10 +42,9 @@ RailsAdmin.config do |config|
       only ['Company']       
       controller do
         proc do
-          @company = @object      # The company instance
-          @employees = @company.employees  # Assuming you have a `has_many :employees` association in your Company model.
-
-          render action: @action.template_name  # This will render the view for the custom action
+          @company = @object
+          @employees = @company.employees
+          render action: @action.template_name
         end
       end
       link_icon 'fa fa-eye'

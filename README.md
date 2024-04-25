@@ -13,6 +13,8 @@ Things you may want to cover:
 
 - Configuration
   Database pg
+  
+- Node 19.3.0
 
 - Database creation
   rails db:create
